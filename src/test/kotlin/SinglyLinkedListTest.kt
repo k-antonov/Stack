@@ -45,7 +45,8 @@ class SinglyLinkedListTest {
     @Test
     fun `after element added then removed must be empty`() {
         list.addLast(1)
-        list.removeLast()
+        val removedElement = list.removeLast()
+        assertEquals(1, removedElement)
         assertEmpty()
     }
 
@@ -70,7 +71,8 @@ class SinglyLinkedListTest {
     fun `after two elements added and last removed`() {
         list.addLast(0)
         list.addLast(1)
-        list.removeLast()
+        val removedElement = list.removeLast()
+        assertEquals(1, removedElement)
         assertFalse(list.isEmpty)
         assertEquals("$LIST_KEY(0 -> null)", list.toString())
     }
@@ -90,11 +92,16 @@ class SinglyLinkedListTest {
         list.addLast(60)
         list.addLast(70)
 
-        list.removeLast()
+        var removedElement = list.removeLast()
+        assertEquals(70, removedElement)
         assertEquals("$LIST_KEY(50 -> 60 -> null)", list.toString())
-        list.removeLast()
+
+        removedElement = list.removeLast()
+        assertEquals(60, removedElement)
         assertEquals("$LIST_KEY(50 -> null)", list.toString())
-        list.removeLast()
+
+        removedElement = list.removeLast()
+        assertEquals(50, removedElement)
         assertEmpty()
     }
 
@@ -104,8 +111,11 @@ class SinglyLinkedListTest {
         list.addLast(2)
         list.addAt(index = 1, value = 1)
         list.addFirst(-1)
-        list.removeAt(2)
-        list.removeFirst()
+        var removedElement = list.removeAt(2)
+        assertEquals(1, removedElement)
+
+        removedElement = list.removeFirst()
+        assertEquals(-1, removedElement)
         assertEquals("$LIST_KEY(0 -> 2 -> null)", list.toString())
     }
 

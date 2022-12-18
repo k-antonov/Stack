@@ -52,7 +52,7 @@ class SinglyLinkedList<T> {
         size++
     }
 
-    fun removeAt(index: Int) {
+    fun removeAt(index: Int): T {
         if (index < 0 || index >= size)
             throw IndexOutOfBoundsException()
 
@@ -63,7 +63,7 @@ class SinglyLinkedList<T> {
         if (index == 0) {
             head = currentNode?.next
             size--
-            return
+            return currentNode!!.data
         }
 
         while (counter != index) {
@@ -73,11 +73,12 @@ class SinglyLinkedList<T> {
         }
         prevNode?.next = currentNode?.next
         size--
+        return currentNode!!.data
     }
 
-    fun removeLast() = removeAt(size - 1)
+    fun removeLast(): T = removeAt(size - 1)
 
-    fun removeFirst() = removeAt(0)
+    fun removeFirst(): T = removeAt(0)
 
     fun get(index: Int): T {
         if (index < 0 || index >= size)
