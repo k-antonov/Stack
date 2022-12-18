@@ -1,7 +1,7 @@
 class SinglyLinkedList<T> {
 
     private var head: Node<T>? = null
-    private var size = 0
+    var size = 0
 
     val isEmpty: Boolean
         get() = size == 0
@@ -78,6 +78,19 @@ class SinglyLinkedList<T> {
     fun removeLast() = removeAt(size - 1)
 
     fun removeFirst() = removeAt(0)
+
+    fun get(index: Int): T {
+        if (index < 0 || index >= size)
+            throw IndexOutOfBoundsException()
+
+        var currentNode = head
+        var counter = 0
+        while (counter != index) {
+            currentNode = currentNode?.next
+            counter++
+        }
+        return currentNode!!.data
+    }
 
     override fun toString(): String {
         var currentNode = head

@@ -108,4 +108,31 @@ class SinglyLinkedListTest {
         list.removeFirst()
         assertEquals("$LIST_KEY(0 -> 2 -> null)", list.toString())
     }
+
+    @Test
+    fun `get first element`() {
+        list.addLast(10)
+        list.addLast(20)
+        list.addLast(30)
+        val firstElement = list.get(index = 0)
+        assertEquals(10, firstElement)
+    }
+
+    @Test
+    fun `get last element`() {
+        list.addLast(10)
+        list.addLast(20)
+        list.addLast(30)
+        val lastElement = list.get(index = list.size - 1)
+        assertEquals(30, lastElement)
+    }
+
+    @Test
+    fun `get element in the middle`() {
+        list.addLast(10)
+        list.addLast(20)
+        list.addLast(30)
+        val middleElement = list.get(index = 1)
+        assertEquals(20, middleElement)
+    }
 }
