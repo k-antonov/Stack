@@ -1,19 +1,19 @@
-class SinglyLinkedList {
+class SinglyLinkedList<T> {
 
-    private var head: Node? = null
+    private var head: Node<T>? = null
     private var size = 0
 
     val isEmpty: Boolean
         get() = size == 0
 
-    fun addFirst(value: Int) {
+    fun addFirst(value: T) {
         val newNode = Node(value)
         newNode.next = head
         head = newNode
         size++
     }
 
-    fun addLast(value: Int) {
+    fun addLast(value: T) {
         if (isEmpty) {
             addFirst(value)
             return
@@ -28,7 +28,7 @@ class SinglyLinkedList {
         size++
     }
 
-    fun addAt(index: Int, value: Int) {
+    fun addAt(index: Int, value: T) {
         if (index < 0 || index > size)
             throw IndexOutOfBoundsException()
         if (index == 0) {
@@ -57,7 +57,7 @@ class SinglyLinkedList {
             throw IndexOutOfBoundsException()
 
         var currentNode = head
-        var prevNode: Node? = null
+        var prevNode: Node<T>? = null
         var counter = 0
 
         if (index == 0) {
@@ -92,8 +92,8 @@ class SinglyLinkedList {
         return "SinglyLinkedList($resultString)"
     }
 
-    private inner class Node(val data: Int) {
-        var next: Node? = null
+    private inner class Node<T>(val data: T) {
+        var next: Node<T>? = null
 
         override fun toString(): String {
             return "Node(data=$data, next=${next?.data})"

@@ -7,7 +7,7 @@ import kotlin.test.assertTrue
 
 class SinglyLinkedListTest {
 
-    private lateinit var list: SinglyLinkedList
+    private lateinit var list: SinglyLinkedList<Int>
 
     private companion object {
         const val LIST_KEY = "SinglyLinkedList"
