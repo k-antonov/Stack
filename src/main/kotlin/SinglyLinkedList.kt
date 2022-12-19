@@ -80,6 +80,12 @@ class SinglyLinkedList<T> {
 
     fun removeFirst(): T = removeAt(0)
 
+    fun clear() {
+        while (size > 0) {
+            removeLast()
+        }
+    }
+
     fun get(index: Int): T {
         if (index < 0 || index >= size)
             throw IndexOutOfBoundsException()

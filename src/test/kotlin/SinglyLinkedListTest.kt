@@ -120,7 +120,12 @@ class SinglyLinkedListTest {
     }
 
     @Test
-    fun `get first element`() {
+    fun `getting element from empty list must throw exception`() {
+        assertThrows<IndexOutOfBoundsException> { list.get(index = 0) }
+    }
+
+    @Test
+    fun `after adding three getting first element must return first`() {
         list.addLast(10)
         list.addLast(20)
         list.addLast(30)
@@ -129,7 +134,7 @@ class SinglyLinkedListTest {
     }
 
     @Test
-    fun `get last element`() {
+    fun `after adding three getting last element must return last`() {
         list.addLast(10)
         list.addLast(20)
         list.addLast(30)
@@ -138,11 +143,26 @@ class SinglyLinkedListTest {
     }
 
     @Test
-    fun `get element in the middle`() {
+    fun `after adding three getting element in the middle must return middle`() {
         list.addLast(10)
         list.addLast(20)
         list.addLast(30)
         val middleElement = list.get(index = 1)
         assertEquals(20, middleElement)
+    }
+
+    @Test
+    fun `clearing empty list should result in empty list`() {
+        list.clear()
+        assertEmpty()
+    }
+
+    @Test
+    fun `after three elements added clear must remove all`() {
+        list.addLast(10)
+        list.addLast(20)
+        list.addLast(30)
+        list.clear()
+        assertEmpty()
     }
 }
