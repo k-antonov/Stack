@@ -43,6 +43,15 @@ class SinglyLinkedListTest {
     }
 
     @Test
+    fun `after three elements added size must be three`() {
+        list.addLast(1)
+        list.addLast(2)
+        list.addLast(3)
+        assertEquals(3, list.size)
+        assertEquals("$LIST_KEY(1 -> 2 -> 3 -> null)", list.toString())
+    }
+
+    @Test
     fun `after element added then removed must be empty`() {
         list.addLast(1)
         val removedElement = list.removeLast()
