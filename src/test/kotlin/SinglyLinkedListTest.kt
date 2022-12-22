@@ -134,6 +134,19 @@ class SinglyLinkedListTest {
     }
 
     @Test
+    fun `getting element must not modify list`() {
+        list.addLast(10)
+        list.addLast(20)
+        list.addLast(30)
+
+        list.get(index = 0)
+        list.get(index = 1)
+        list.get(index = 2)
+        assertFalse(list.isEmpty)
+        assertEquals("$LIST_KEY(10 -> 20 -> 30 -> null)", list.toString())
+    }
+
+    @Test
     fun `after adding three getting first element must return first`() {
         list.addLast(10)
         list.addLast(20)
